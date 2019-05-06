@@ -17,7 +17,7 @@ namespace GroupProject
 
             do
             {
-                Questions(sr);
+                Questions(questions);
             } while (true);
         }
 
@@ -65,39 +65,77 @@ namespace GroupProject
             Console.WriteLine("###############################################################################################");
         }
 
-        static void Questions(StreamReader sr)
+        static void Questions(string[] questions)
         {
             Random rand = new Random();
-            string reply;
-            string[] yes = { "yes", "sure", "okay", "definitely" };//Confirming answers
-            string[] maybe = { "maybe" };
-            string[] no = { "no", "never", "nope", "can't" };//Denying answers            foreach (string sentence in questions)
-            string sentence = "test";
+            string[] reply;
+            string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
+            string[] yes = fileText[0].Split(',');
+            string[] maybe = fileText[1].Split(',');
+            string[] no = fileText[2].Split(',');
 
-            foreach (char letter in sentence)
+            int positiveWords = 0;
+            int negativeWords = 0;
+            int maybeWords = 0;
+
+            bool unknown = false;
+
+            foreach (string question in questions)
             {
-                Console.Write(letter);
-                Thread.Sleep(rand.Next(30, 150));
+                foreach (char letter in question)
+                {
+                    Console.Write(letter);
+                    Thread.Sleep(rand.Next(30, 150));
+                }
             }
+
             Console.Write("\n                     ");
 
-            reply = Console.ReadLine().ToLower(); // Stores reply to than be called to that questions own method
+            reply = Console.ReadLine().ToLower().Trim().Split(' ');
 
-            if (Array.BinarySearch(yes, reply) >= 0)//Exists in array
+            foreach (string word in reply)
             {
-                Confirmation();//Passes in question number for appropriate follow up questions
+                foreach (string check in yes)
+                {
+                    if (word == check)
+                    {
+                        positiveWords++;
+                    }
+                }
+                foreach (string check in no)
+                {
+                    if (word == check)
+                    {
+                        negativeWords++;
+                    }
+                }
+                foreach (string check in maybe)
+                {
+                    if (word == check)
+                    {
+                        maybeWords++;
+                    }
+                }
             }
-            else if (Array.BinarySearch(no, reply) >= 0)
+
+            if ((positiveWords == 0) && (negativeWords == 0) && (maybeWords == 0))
             {
-                Denial();//Passes in question number for appropriate follow up questions
+                unknown = true;
             }
-            else if (Array.BinarySearch(maybe, reply) >= 0)
+
+            if (positiveWords > 0)
             {
-                Maybe();//Passes in question number for appropriate follow up questions
+                Console.WriteLine("POSITIVE");
             }
-            else
+
+            if (negativeWords > 0)
             {
-                Unknown();//Passes in question number for appropriate generic responses
+                Console.WriteLine("NEGATIVE");
+            }
+
+            if (maybeWords > 0)
+            {
+                Console.WriteLine("MAYBE");
             }
 
             Console.Clear();
