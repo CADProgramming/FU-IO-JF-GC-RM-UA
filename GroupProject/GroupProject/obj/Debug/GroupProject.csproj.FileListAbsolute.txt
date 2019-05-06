@@ -12,3 +12,10 @@ C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\Group
 C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
 C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
 C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csprojAssemblyReference.cache
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
