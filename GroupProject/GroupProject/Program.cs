@@ -93,12 +93,8 @@ namespace GroupProject
             string[] reply;
             string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
             string[] yes = fileText[0].Split(',');
-            string[] maybe = fileText[1].Split(',');
-            string[] no = fileText[2].Split(',');
-
-            int positiveWords = 0;
-            int negativeWords = 0;
-            int maybeWords = 0;
+            string[] maybe = fileText[2].Split(',');
+            string[] no = fileText[1].Split(',');
 
             bool unknown = false;
 
@@ -115,51 +111,75 @@ namespace GroupProject
 
             reply = Console.ReadLine().ToLower().Trim().Split(' ');
 
+            int[] meaningArray = new int[reply.Length];
+            int goodCount = 0;
+            int badCount = 0;
+            int neutralCount = 0;
+            int meaning = 1;
+
             foreach (string word in reply)
             {
                 foreach (string check in yes)
                 {
                     if (word == check)
                     {
-                        positiveWords++;
+                        goodCount++;
                     }
                 }
                 foreach (string check in no)
                 {
                     if (word == check)
                     {
-                        negativeWords++;
+                        badCount++;
                     }
                 }
                 foreach (string check in maybe)
                 {
                     if (word == check)
                     {
-                        maybeWords++;
+                        neutralCount++;
                     }
                 }
             }
 
-            if ((positiveWords == 0) && (negativeWords == 0) && (maybeWords == 0))
+            for (int i = 0; i < badCount; i++)
+            {
+                meaning *= -1;
+            }
+
+            if (neutralCount > 0)
+            {
+                meaning = 0;
+            }
+
+            if ((goodCount == 0) && (badCount == 0) && (neutralCount == 0))
             {
                 unknown = true;
             }
 
-            if (positiveWords > 0)
+            if (unknown == false)
             {
-                Console.WriteLine("POSITIVE");
+                if (meaning == 1)
+                {
+                    Console.WriteLine("POSITIVE");
+                }
+
+                if (meaning == -1)
+                {
+                    Console.WriteLine("NEGATIVE");
+                }
+
+                if (meaning == 0)
+                {
+                    Console.WriteLine("MAYBE");
+                }
+            }
+            else
+            {
+                Console.WriteLine("UNKNOWN");
             }
 
-            if (negativeWords > 0)
-            {
-                Console.WriteLine("NEGATIVE");
-            }
-
-            if (maybeWords > 0)
-            {
-                Console.WriteLine("MAYBE");
-            }
-
+            //Thread.Sleep(3000);
             Console.Clear();
             Face();
         }
