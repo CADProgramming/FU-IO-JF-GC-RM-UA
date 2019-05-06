@@ -13,13 +13,15 @@ namespace GroupProject
             string job = "IT Support Person", name = "", age = "", occu = "";
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\ITSupportPerson.txt");
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
+            string[] answers = new string[questions.Length];
+            string[] originalText = new string[questions.Length];
             Intro(job, name, age, occu);
             bool repeat = false;
             string[] storage = new string[questions.Length];
 
             do
             {
-                Questions(questions, repeat, storage);
+                Questions(questions, repeat, storage, answers, originalText);
                 repeat = true;
             } while (true);
         } // Main Method
@@ -91,11 +93,9 @@ namespace GroupProject
             Console.WriteLine("###############################################################################################");
         }
         
-        static void Questions(string[] questions, bool repeat, string[] storage)
+        static void Questions(string[] questions, bool repeat, string[] storage, string[] answers, string[] originalText)
         {
             string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
-            string[] answers = new string[questions.Length];
-            string[] originalText = new string[questions.Length];
             string[] yes = fileText[0].Split(',');
             string[] maybe = fileText[2].Split(',');
             string[] no = fileText[1].Split(',');
