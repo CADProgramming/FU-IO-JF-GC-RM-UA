@@ -7,6 +7,7 @@ namespace GroupProject
 {
     class Program
     {
+        public static int interviewChoice = 0;
         static void Main(string[] args)
         {
             Random rand = new Random();
@@ -27,6 +28,8 @@ namespace GroupProject
         static void Intro(string job, string name, string age, string occu) // Does the introductory sequence
         {
             Random rand = new Random();
+            Console.WriteLine("This interview is interactive to ensure you are most comfortable \n We have a number of interviewers for you to choose \n1 - Dr Rakessh \n2 - Annabelle \n3 - Alien");
+            interviewChoice = Convert.ToInt32(Console.ReadLine());
             string[] script = { "Hi, Thank you for coming in", $"I can see here you are applying for the IT Support Person position", "So lets get started" };
             Face();
             Console.Write("                             ");
@@ -69,26 +72,79 @@ namespace GroupProject
 
         static void Face() //Face method to easily be called to print face on console
         {
-            Console.WriteLine("                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            Console.WriteLine("                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            Console.WriteLine("                             XXXXXXXXXXXXXXXXXX         XXXXXXXX");
-            Console.WriteLine("                            XXXXXXXXXXXXXXXX              XXXXXXX");
-            Console.WriteLine("                            XXXXXXXXXXXXX                   XXXXX");
-            Console.WriteLine("                             XXX     _________ _________     XXX");
-            Console.WriteLine("                              XX    I  _xxxxx I xxxxx_  I    XX  ");
-            Console.WriteLine("                             ( X----I         I         I----X ) ");
-            Console.WriteLine("                            ( +I    I      00 I 00      I    I+ )");
-            Console.WriteLine("                             ( I    I    __0  I  0__    I    I )");
-            Console.WriteLine(@"                              (I    I______ /   \_______I    I)");
-            Console.WriteLine("                               I           ( ___ )           I");
-            Console.WriteLine("                               I    _  :::::::::::::::  _    i");
-            Console.WriteLine(@"                                \    \___ ::::::::: ___/    /");
-            Console.WriteLine(@"                                \_      \_________/      _/");
-            Console.WriteLine(@"                                   \        \___,        /");
-            Console.WriteLine(@"                                     \                 /");
-            Console.WriteLine(@"                                      |\             /|");
-            Console.WriteLine(@"                                      |  \_________/  |");
-            Console.WriteLine("###############################################################################################");
+            Console.Clear();
+            switch (interviewChoice)
+            {
+                case 1:
+
+                    Console.WriteLine("                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                    Console.WriteLine("                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                    Console.WriteLine("                             XXXXXXXXXXXXXXXXXX         XXXXXXXX");
+                    Console.WriteLine("                            XXXXXXXXXXXXXXXX              XXXXXXX");
+                    Console.WriteLine("                            XXXXXXXXXXXXX                   XXXXX");
+                    Console.WriteLine("                             XXX     _________ _________     XXX");
+                    Console.WriteLine("                              XX    I  _xxxxx I xxxxx_  I    XX  ");
+                    Console.WriteLine("                             ( X----I         I         I----X ) ");
+                    Console.WriteLine("                            ( +I    I      00 I 00      I    I+ )");
+                    Console.WriteLine("                             ( I    I    __0  I  0__    I    I )");
+                    Console.WriteLine(@"                              (I    I______ /   \_______I    I)");
+                    Console.WriteLine("                               I           ( ___ )           I");
+                    Console.WriteLine("                               I    _  :::::::::::::::  _    i");
+                    Console.WriteLine(@"                                \    \___ ::::::::: ___/    /");
+                    Console.WriteLine(@"                                \_      \_________/      _/");
+                    Console.WriteLine(@"                                   \        \___,        /");
+                    Console.WriteLine(@"                                     \                 /");
+                    Console.WriteLine(@"                                      |\             /|");
+                    Console.WriteLine(@"                                      |  \_________/  |");
+                    Console.WriteLine("###############################################################################################");
+                    break;
+                case 2:
+
+                    Console.WriteLine(@"                                    .&&&&&&&&&&&&&&.");
+                    Console.WriteLine(@"                                 .&&&&&&&&&&&&&&&&&&&&.");
+                    Console.WriteLine(@"                               .&&&&&&&&&&&&&&&&&&&&&&&&.");
+                    Console.WriteLine(@"                              &&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+                    Console.WriteLine(@"                             &&&&&&&& &:&&:&&:&&:&&&&&&&&&&");
+                    Console.WriteLine(@"                            &&&&&&&&:&'&''&&''&&' &:&&&&&&&&");
+                    Console.WriteLine(@"                           .&&&&&& '((((((     ))))))' &&&&&&.");
+                    Console.WriteLine(@"                           &&&&&& '(/````\     /````\)' &&&&&&");
+                    Console.WriteLine(@"                           &&&&:' `\ (_) ) \ ( (_) /` ':&&&&");
+                    Console.WriteLine(@"                           && ( :. ''''''   \ `````` .: ) &&");
+                    Console.WriteLine(@"                           &&\ \:::.      ,__)     .:::/ /&&");
+                    Console.WriteLine(@"                           '&&\ `:::               :::` /&&'");
+                    Console.WriteLine(@"                            &&&`/\:`     .-.-.     `:/\`&&&");
+                    Console.WriteLine(@"                           .&&&(  )    .'._,_.'.    (  ) &&&.");
+                    Console.WriteLine(@"                           &&&&&&&&\    \` ` `/    /&&&&&&&&");
+                    Console.WriteLine(@"                           &&&&&&&& &\   `---`    /&&&&&&&&&");
+                    Console.WriteLine(@"                           &&&&&&&&&&`-._______.-'&&&&&&&&&&");
+                    Console.WriteLine(@"                          &&&&&&&&&&&             &&&&&&&&&&&");
+                    Console.WriteLine(@"                         &&&&&&&&&&'                '&&&&&&&&&");
+                    Console.WriteLine("###############################################################################################");
+                    break;
+                case 3:
+                    Console.WriteLine(@"                            ______");
+                    Console.WriteLine(@"                           /_.  ._\");
+                    Console.WriteLine(@"                          (( \\// ))");
+                    Console.WriteLine(@"                           \\ \/ //");
+                    Console.WriteLine(@"                            \\/\//");
+                    Console.WriteLine(@"                       \\\  ( '' )  ///");
+                    Console.WriteLine(@"                        )))  \__/  (((");
+                    Console.WriteLine(@"                       (((.'__||__'.)))");
+                    Console.WriteLine(@"                        \\  )    (  //");
+                    Console.WriteLine(@"                         \\/.'  '.\//");
+                    Console.WriteLine(@"                          \/ |,,| \/");
+                    Console.WriteLine(@"                             |  |");
+                    Console.WriteLine(@"                             |  |");
+                    Console.WriteLine(@"                             //\\");
+                    Console.WriteLine(@"                            //  \\");
+                    Console.WriteLine(@"                           ||    ||");
+                    Console.WriteLine(@"                           ||    ||");
+                    Console.WriteLine(@"                           ||    ||");
+                    Console.WriteLine(@"                        ___))    ((___");
+                    Console.WriteLine(@"                       (____)    (____)");
+                    Console.WriteLine("###############################################################################################");
+                    break;
+            }
         }
         
         static void Questions(string[] questions, bool repeat, string[] storage)

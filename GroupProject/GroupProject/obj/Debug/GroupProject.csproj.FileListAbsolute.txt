@@ -29,3 +29,10 @@ C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Deb
 C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
 C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
 >>>>>>> ea6c8f5fe07ceff377a4d55634d8bdf1f6302d9a
+H:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+H:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe
+H:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
+H:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csprojAssemblyReference.cache
+H:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
+H:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
+H:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
