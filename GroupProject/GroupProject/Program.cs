@@ -13,13 +13,14 @@ namespace GroupProject
             string job = "IT Support Person", name = "", age = "", occu = "";
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\ITSupportPerson.txt");
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
-            //Intro(job, name, age, occu);
+            Intro(job, name, age, occu);
             bool repeat = false;
             string[] storage = new string[questions.Length];
 
             do
             {
                 Questions(questions, repeat, storage);
+                repeat = true;
             } while (true);
         }
 
@@ -94,6 +95,7 @@ namespace GroupProject
         {
             string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
             string[] answers = new string[questions.Length];
+            string[] originalText = new string[questions.Length];
             string[] yes = fileText[0].Split(',');
             string[] maybe = fileText[2].Split(',');
             string[] no = fileText[1].Split(',');
@@ -114,18 +116,16 @@ namespace GroupProject
                     Thread.Sleep(rand.Next(30, 100));
                 }
                 Console.WriteLine();
-                //Console.WriteLine(storage[count]);
                 Console.Write("                     ");
-                Console.WriteLine(repeat);
-                replies[count] = Console.ReadLine().ToLower().Trim();
-                reply = Console.ReadLine().ToLower().Trim().Split(' ');
+                reply[count] = Console.ReadLine().ToLower().Trim();
+                originalText[count] = reply[count];
                 if (repeat == true)
                 {
                     if (storage[count] != answers[count])
                     {
                         Console.Clear();
                         Face();
-                        Console.WriteLine($"You answered {reply[count]}, but last time you answered {storage[count]}");
+                        Console.WriteLine($"You answered {reply[count]}, but last time you answered {originalText[count]}");
                         Console.WriteLine("What is your answer?");
                         reply[count] = Console.ReadLine().ToLower().Trim();
                     }
@@ -134,11 +134,10 @@ namespace GroupProject
                 Identify(reply, yes, maybe, no, answers, count);
                 
                 count++;
-                if (count == questions.Length)//It's not doing this code
+                if (count == questions.Length-1)
                 {
                     Array.Copy(answers, storage, reply.Length);
                     count = 0;
-                    repeat = true;
                 }
             }
         }
@@ -151,8 +150,9 @@ namespace GroupProject
             int badCount = 0;
             int neutralCount = 0;
             int meaning = 1;
+            string[] replyAsWords = reply[count].Split(' ');
 
-            foreach (string word in reply)
+            foreach (string word in replyAsWords)
             {
                 foreach (string check in yes)
                 {
