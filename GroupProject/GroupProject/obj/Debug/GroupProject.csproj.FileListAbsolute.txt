@@ -5,3 +5,10 @@ H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\
 H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
 H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
 H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
+C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe
+C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
+C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csprojAssemblyReference.cache
+C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
+C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
+C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb

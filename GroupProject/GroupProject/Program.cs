@@ -40,7 +40,7 @@ namespace GroupProject
                 Face();
                 Console.Write("                     ");
             }
-            
+
             Console.Clear();
             Face();
             Console.Write("                     "); // Gets Name
@@ -100,88 +100,88 @@ namespace GroupProject
 
             foreach (string question in questions)
             {
+                Console.Write("                     ");
                 foreach (char letter in question)
                 {
                     Console.Write(letter);
                     Thread.Sleep(rand.Next(30, 150));
                 }
-            }
+                Console.WriteLine();
+                Console.Write("                     ");
+                reply = Console.ReadLine().ToLower().Trim().Split(' ');
 
-            Console.Write("\n                     ");
+                int[] meaningArray = new int[reply.Length];
+                int goodCount = 0;
+                int badCount = 0;
+                int neutralCount = 0;
+                int meaning = 1;
 
-            reply = Console.ReadLine().ToLower().Trim().Split(' ');
-
-            int[] meaningArray = new int[reply.Length];
-            int goodCount = 0;
-            int badCount = 0;
-            int neutralCount = 0;
-            int meaning = 1;
-
-            foreach (string word in reply)
-            {
-                foreach (string check in yes)
+                foreach (string word in reply)
                 {
-                    if (word == check)
+                    foreach (string check in yes)
                     {
-                        goodCount++;
+                        if (word == check)
+                        {
+                            goodCount++;
+                        }
+                    }
+                    foreach (string check in no)
+                    {
+                        if (word == check)
+                        {
+                            badCount++;
+                        }
+                    }
+                    foreach (string check in maybe)
+                    {
+                        if (word == check)
+                        {
+                            neutralCount++;
+                        }
                     }
                 }
-                foreach (string check in no)
+
+                for (int i = 0; i < badCount; i++)
                 {
-                    if (word == check)
+                    meaning *= -1;
+                }
+
+                if (neutralCount > 0)
+                {
+                    meaning = 0;
+                }
+
+                if ((goodCount == 0) && (badCount == 0) && (neutralCount == 0))
+                {
+                    unknown = true;
+                }
+
+                if (unknown == false)
+                {
+                    if (meaning == 1)
                     {
-                        badCount++;
+                        Console.WriteLine("POSITIVE");
+                    }
+
+                    if (meaning == -1)
+                    {
+                        Console.WriteLine("NEGATIVE");
+                    }
+
+                    if (meaning == 0)
+                    {
+                        Console.WriteLine("MAYBE");
                     }
                 }
-                foreach (string check in maybe)
+                else
                 {
-                    if (word == check)
-                    {
-                        neutralCount++;
-                    }
-                }
-            }
-
-            for (int i = 0; i < badCount; i++)
-            {
-                meaning *= -1;
-            }
-
-            if (neutralCount > 0)
-            {
-                meaning = 0;
-            }
-
-            if ((goodCount == 0) && (badCount == 0) && (neutralCount == 0))
-            {
-                unknown = true;
-            }
-
-            if (unknown == false)
-            {
-                if (meaning == 1)
-                {
-                    Console.WriteLine("POSITIVE");
+                    Console.WriteLine("UNKNOWN");
                 }
 
-                if (meaning == -1)
-                {
-                    Console.WriteLine("NEGATIVE");
-                }
-
-                if (meaning == 0)
-                {
-                    Console.WriteLine("MAYBE");
-                }
+                //Thread.Sleep(3000);
+                Console.Clear();
+                Face();
             }
-            else
-            {
-                Console.WriteLine("UNKNOWN");
-            }
-
-            //Thread.Sleep(3000);
-            Console.Clear();
-            Face();
         }
 
         static void Confirmation()
