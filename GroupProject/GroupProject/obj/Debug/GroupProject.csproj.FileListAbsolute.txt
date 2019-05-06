@@ -12,6 +12,7 @@ C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\Group
 C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
 C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
 C:\Users\Oof\Desktop\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
+<<<<<<< HEAD
 C:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
 C:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe
 C:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
@@ -19,3 +20,12 @@ C:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csprojAsse
 C:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
 C:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
 C:\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
+=======
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csprojAssemblyReference.cache
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
+C:\Users\Clayton\Desktop\GIT\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
+>>>>>>> ea6c8f5fe07ceff377a4d55634d8bdf1f6302d9a
