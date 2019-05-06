@@ -22,7 +22,7 @@ namespace GroupProject
                 Questions(questions, repeat, storage);
                 repeat = true;
             } while (true);
-        }
+        } // Main Method
 
         static void Intro(string job, string name, string age, string occu) // Does the introductory sequence
         {
@@ -140,7 +140,7 @@ namespace GroupProject
                     count = 0;
                 }
             }
-        }
+        } // Asks questions
 
         static void Identify(string[] reply, string[] yes, string[] maybe, string[] no, string[] answers, int count)
         {
@@ -223,26 +223,6 @@ namespace GroupProject
                 }
                 answers[count] = temp.Trim();
             }
-        }
-
-        static void Confirmation()
-        {
-
-        }
-
-        static void Denial()
-        {
-
-        }
-
-        static void Maybe()
-        {
-
-        }
-
-        static void Unknown()
-        {
-
-        }
+        } // Identifies key words
     }
 }
