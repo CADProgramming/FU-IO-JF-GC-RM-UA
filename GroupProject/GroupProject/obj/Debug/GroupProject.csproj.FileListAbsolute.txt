@@ -1,0 +1,7 @@
+H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csprojAssemblyReference.cache
+H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.csproj.CoreCompileInputs.cache
+H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe.config
+H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.exe
+H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\bin\Debug\GroupProject.pdb
+H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.exe
+H:\My Documents\Course_Work\Git\FU-IO-JF-GC-RM-UA\GroupProject\GroupProject\obj\Debug\GroupProject.pdb
