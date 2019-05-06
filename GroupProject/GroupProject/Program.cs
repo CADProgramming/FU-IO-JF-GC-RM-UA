@@ -117,8 +117,13 @@ namespace GroupProject
                 }
                 Console.WriteLine();
                 Console.Write("                     ");
+
                 reply[count] = Console.ReadLine().ToLower().Trim();
-                originalText[count] = reply[count];
+
+                if (repeat == false)
+                {
+                    originalText[count] = reply[count];
+                }
 
                 if (repeat == true)
                 {
