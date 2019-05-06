@@ -13,12 +13,13 @@ namespace GroupProject
             string job = "IT Support Person", name = "", age = "", occu = "";
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\ITSupportPerson.txt");
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
-            string[] answers = new string[questions.Length];
             Intro(job, name, age, occu);
+            bool repeat = false;
+            string[] storage = new string[questions.Length];
 
             do
             {
-                Questions(questions, answers);
+                Questions(questions, repeat, storage);
             } while (true);
         }
 
@@ -61,6 +62,8 @@ namespace GroupProject
             Console.WriteLine("What is your occupation?");
             Console.Write("                     ");
             occu = Console.ReadLine();
+
+            Console.Clear();
         }
 
         static void Face() //Face method to easily be called to print face on console
@@ -86,113 +89,127 @@ namespace GroupProject
             Console.WriteLine(@"                                      |  \_________/  |");
             Console.WriteLine("###############################################################################################");
         }
-
-        static void Questions(string[] questions, string[] answers)
+        
+        static void Questions(string[] questions, bool repeat, string[] storage)
         {
-            Random rand = new Random();
-            string[] reply;
             string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
             string[] yes = fileText[0].Split(',');
             string[] maybe = fileText[2].Split(',');
             string[] no = fileText[1].Split(',');
-            int questionNumber = 0;
+            
+            Random rand = new Random();
+            string[] reply = new string[questions.Length];
+            Face();
+            int count = 0;
 
             foreach (string question in questions)
             {
-                questionNumber++;
+                Console.Clear();
+                Face();
                 Console.Write("                     ");
                 foreach (char letter in question)
                 {
                     Console.Write(letter);
-                    Thread.Sleep(rand.Next(30, 150));
+                    Thread.Sleep(rand.Next(30, 100));
                 }
                 Console.WriteLine();
+                //Console.WriteLine(storage[count]);
                 Console.Write("                     ");
-                reply = Console.ReadLine().ToLower().Trim().Split(' ');
 
-                int[] meaningArray = new int[reply.Length];
-                int goodCount = 0;
-                int badCount = 0;
-                int neutralCount = 0;
-                int meaning = 1;
-                bool unknown = false;
-
-                foreach (string word in reply)
+                reply[count] = Console.ReadLine().ToLower().Trim();
+                if (repeat == true)
                 {
-                    foreach (string check in yes)
+                    if (storage[count] != reply[count])
                     {
-                        if (word == check)
-                        {
-                            goodCount++;
-                        }
-                    }
-                    foreach (string check in no)
-                    {
-                        if (word == check)
-                        {
-                            badCount++;
-                        }
-                    }
-                    foreach (string check in maybe)
-                    {
-                        if (word == check)
-                        {
-                            neutralCount++;
-                        }
+                        Console.Clear();
+                        Face();
+                        Console.WriteLine($"You answered {reply[count]}, but last time you answered {storage[count]}");
+                        Console.WriteLine("What is your answer?");
+                        reply[count] = Console.ReadLine().ToLower().Trim();
                     }
                 }
 
-                for (int i = 0; i < badCount; i++)
+                Identify(reply, yes, maybe, no);
+                
+                count++;
+                if (count == questions.Length)
                 {
-                    meaning *= -1;
+                    Array.Copy(reply, storage, reply.Length);
+                    count = 0;
+                    repeat = true;
                 }
+            }
+        }
 
-                if (neutralCount > 0)
+        static void Identify(string[] reply, string[] yes, string[] maybe, string[] no)
+        {
+            bool unknown = false;
+            int[] meaningArray = new int[reply.Length];
+            int goodCount = 0;
+            int badCount = 0;
+            int neutralCount = 0;
+            int meaning = 1;
+
+            foreach (string word in reply)
+            {
+                foreach (string check in yes)
                 {
-                    meaning = 0;
-                }
-
-                if ((goodCount == 0) && (badCount == 0) && (neutralCount == 0))
-                {
-                    unknown = true;
-                }
-
-                if (unknown == false)
-                {
-                    if (meaning == 1)
+                    if (word == check)
                     {
-                        Console.WriteLine("POSITIVE");
-                        answers[questionNumber - 1] = "yes";
-                    }
-
-                    if (meaning == -1)
-                    {
-                        Console.WriteLine("NEGATIVE");
-                        answers[questionNumber - 1] = "no";
-                    }
-
-                    if (meaning == 0)
-                    {
-                        Console.WriteLine("MAYBE");
-                        answers[questionNumber - 1] = "maybe";
+                        goodCount++;
                     }
                 }
-                else
+                foreach (string check in no)
                 {
-                    Console.WriteLine("UNKNOWN");
-                    string temp = "";
-
-                    for (int i = 0; i < reply.Length; i++)
+                    if (word == check)
                     {
-                        temp += reply[i];
+                        badCount++;
                     }
+                }
+                foreach (string check in maybe)
+                {
+                    if (word == check)
+                    {
+                        neutralCount++;
+                    }
+                }
+            }
 
-                    answers[questionNumber - 1] = temp;
+            for (int i = 0; i < badCount; i++)
+            {
+                meaning *= -1;
+            }
+
+            if (neutralCount > 0)
+            {
+                meaning = 0;
+            }
+
+            if ((goodCount == 0) && (badCount == 0) && (neutralCount == 0))
+            {
+                unknown = true;
+            }
+
+            if (unknown == false)
+            {
+                if (meaning == 1)
+                {
+                    Console.WriteLine("POSITIVE");
                 }
 
-                Thread.Sleep(1000);
-                Console.Clear();
-                Face();
+                if (meaning == -1)
+                {
+                    Console.WriteLine("NEGATIVE");
+                }
+
+                if (meaning == 0)
+                {
+                    Console.WriteLine("MAYBE");
+                }
+            }
+            else
+            {
+                Console.WriteLine("UNKNOWN");
             }
         }
 
