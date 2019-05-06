@@ -72,36 +72,36 @@ namespace GroupProject
             string[] yes = { "yes", "sure", "okay", "definitely" };//Confirming answers
             string[] maybe = { "maybe" };
             string[] no = { "no", "never", "nope", "can't" };//Denying answers            foreach (string sentence in questions)
+            string sentence = "test";
+
+            foreach (char letter in sentence)
             {
-                foreach (char letter in sentence)
-                {
-                    Console.Write(letter);
-                    Thread.Sleep(rand.Next(30, 150));
-                }
-                Console.Write("\n                     ");
-
-                reply = Console.ReadLine().ToLower(); // Stores reply to than be called to that questions own method
-
-                if (Array.BinarySearch(yes, reply) >= 0)//Exists in array
-                {
-                    Confirmation();//Passes in question number for appropriate follow up questions
-                }
-                else if (Array.BinarySearch(no, reply) >= 0)
-                {
-                    Denial();//Passes in question number for appropriate follow up questions
-                }
-                else if (Array.BinarySearch(maybe, reply) >= 0)
-                {
-                    Maybe();//Passes in question number for appropriate follow up questions
-                }
-                else
-                {
-                    Unknown();//Passes in question number for appropriate generic responses
-                }
-
-                Console.Clear();
-                Face();
+                Console.Write(letter);
+                Thread.Sleep(rand.Next(30, 150));
             }
+            Console.Write("\n                     ");
+
+            reply = Console.ReadLine().ToLower(); // Stores reply to than be called to that questions own method
+
+            if (Array.BinarySearch(yes, reply) >= 0)//Exists in array
+            {
+                Confirmation();//Passes in question number for appropriate follow up questions
+            }
+            else if (Array.BinarySearch(no, reply) >= 0)
+            {
+                Denial();//Passes in question number for appropriate follow up questions
+            }
+            else if (Array.BinarySearch(maybe, reply) >= 0)
+            {
+                Maybe();//Passes in question number for appropriate follow up questions
+            }
+            else
+            {
+                Unknown();//Passes in question number for appropriate generic responses
+            }
+
+            Console.Clear();
+            Face();
         }
 
         static void Confirmation()
