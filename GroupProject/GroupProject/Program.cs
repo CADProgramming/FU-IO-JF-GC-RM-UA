@@ -119,9 +119,10 @@ namespace GroupProject
                 Console.Write("                     ");
                 reply[count] = Console.ReadLine().ToLower().Trim();
                 originalText[count] = reply[count];
+
                 if (repeat == true)
                 {
-                    if (storage[count] != answers[count])
+                    if ((storage[count] != answers[count]) && ((answers[count] == "yes") || (answers[count] == "no") || (answers[count] == "maybe")))
                     {
                         Console.Clear();
                         Face();
@@ -132,7 +133,13 @@ namespace GroupProject
                 }
 
                 Identify(reply, yes, maybe, no, answers, count);
-                
+
+                Console.WriteLine(repeat);
+                Console.WriteLine(answers[count]);
+                Console.WriteLine(storage[count]);
+
+                Thread.Sleep(4000);
+
                 count++;
                 if (count == questions.Length-1)
                 {
@@ -196,30 +203,26 @@ namespace GroupProject
             {
                 if (meaning == 1)
                 {
-                    Console.WriteLine("POSITIVE");
                     answers[count] = "yes";
                 }
 
                 if (meaning == -1)
                 {
-                    Console.WriteLine("NEGATIVE");
                     answers[count] = "no";
                 }
 
                 if (meaning == 0)
                 {
-                    Console.WriteLine("MAYBE");
                     answers[count] = "maybe";
                 }
             }
             else
             {
-                Console.WriteLine("UNKNOWN");
                 string temp = "";
 
-                for (int i = 0; i < reply.Length; i++)
+                for (int i = 0; i < replyAsWords.Length; i++)
                 {
-                    temp += ($" {reply[i]}");
+                    temp += ($" {replyAsWords[i]}");
                 }
                 answers[count] = temp.Trim();
             }
