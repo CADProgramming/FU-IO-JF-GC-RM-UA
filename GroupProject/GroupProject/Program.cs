@@ -10,10 +10,11 @@ namespace GroupProject
         static void Main(string[] args)
         {
             Random rand = new Random();
-            string job = "IT Support Person";
+            string job = "IT Support Person", name = "", age = "", occu = "";
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\ITSupportPerson.txt");
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
-            Intro(job);
+            string[] answers = new string[questions.Length];
+            Intro(job, name, age, occu);
 
             do
             {
@@ -21,7 +22,7 @@ namespace GroupProject
             } while (true);
         }
 
-        static void Intro(string job) // Does the introductory sequence
+        static void Intro(string job, string name, string age, string occu) // Does the introductory sequence
         {
             Random rand = new Random();
             string[] script = { "Hi, Thank you for coming in", $"I can see here you are applying for the IT Support Person position", "So lets get started" };
@@ -39,6 +40,27 @@ namespace GroupProject
                 Face();
                 Console.Write("                     ");
             }
+            
+            Console.Clear();
+            Face();
+            Console.Write("                     "); // Gets Name
+            Console.WriteLine("What is your name?");
+            Console.Write("                     ");
+            name = Console.ReadLine();
+
+            Console.Clear();
+            Face();
+            Console.Write("                     "); // Gets Age
+            Console.WriteLine("What is your age?");
+            Console.Write("                     ");
+            age = Console.ReadLine();
+
+            Console.Clear();
+            Face();
+            Console.Write("                     "); // Gets Occupation
+            Console.WriteLine("What is your occupation?");
+            Console.Write("                     ");
+            occu = Console.ReadLine();
         }
 
         static void Face() //Face method to easily be called to print face on console
