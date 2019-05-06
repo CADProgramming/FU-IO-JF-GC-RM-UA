@@ -13,7 +13,6 @@ namespace GroupProject
             string job = "IT Support Person", name = "", age = "", occu = "";
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\ITSupportPerson.txt");
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
-            string[] answers = new string[questions.Length];
             Intro(job, name, age, occu);
             bool repeat = false;
             string[] storage = new string[questions.Length];
@@ -90,7 +89,7 @@ namespace GroupProject
             Console.WriteLine(@"                                      |  \_________/  |");
             Console.WriteLine("###############################################################################################");
         }
-
+        
         static void Questions(string[] questions, bool repeat, string[] storage)
         {
             string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
@@ -114,8 +113,9 @@ namespace GroupProject
                     Thread.Sleep(rand.Next(30, 100));
                 }
                 Console.WriteLine();
-                Console.WriteLine(storage[count]);
+                //Console.WriteLine(storage[count]);
                 Console.Write("                     ");
+
                 reply[count] = Console.ReadLine().ToLower().Trim();
                 if (repeat == true)
                 {
@@ -125,17 +125,8 @@ namespace GroupProject
                         Face();
                         Console.WriteLine($"You answered {reply[count]}, but last time you answered {storage[count]}");
                         Console.WriteLine("What is your answer?");
-                        reply[count] = Convert.ToString(Console.ReadLine().ToLower().Trim().Split(' '));
+                        reply[count] = Console.ReadLine().ToLower().Trim();
                     }
-                }
-
-                if (storage[count] != reply[count])
-                {
-                    Console.Clear();
-                    Face();
-                    Console.WriteLine($"You answered {reply[count]}, but last time you answered {storage[count]}");
-                    Console.WriteLine("What is your answer?");
-                    reply[count] = Convert.ToString(Console.ReadLine().ToLower().Trim().Split(' '));
                 }
 
                 Identify(reply, yes, maybe, no);
