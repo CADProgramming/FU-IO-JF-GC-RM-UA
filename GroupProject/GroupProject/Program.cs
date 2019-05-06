@@ -134,6 +134,7 @@ namespace GroupProject
                         Console.WriteLine($"You answered {reply[count]}, but last time you answered {originalText[count]}");
                         Console.WriteLine("What is your answer?");
                         reply[count] = Console.ReadLine().ToLower().Trim();
+                        originalText[count] = reply[count];
                     }
                 }
 
