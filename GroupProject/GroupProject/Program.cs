@@ -18,7 +18,7 @@ namespace GroupProject
 
             do
             {
-                Questions(questions);
+                Questions(questions, answers);
             } while (true);
         }
 
@@ -87,7 +87,7 @@ namespace GroupProject
             Console.WriteLine("###############################################################################################");
         }
 
-        static void Questions(string[] questions)
+        static void Questions(string[] questions, string[] answers)
         {
             Random rand = new Random();
             string[] reply;
@@ -95,11 +95,11 @@ namespace GroupProject
             string[] yes = fileText[0].Split(',');
             string[] maybe = fileText[2].Split(',');
             string[] no = fileText[1].Split(',');
-
-            bool unknown = false;
+            int questionNumber = 0;
 
             foreach (string question in questions)
             {
+                questionNumber++;
                 Console.Write("                     ");
                 foreach (char letter in question)
                 {
@@ -115,6 +115,7 @@ namespace GroupProject
                 int badCount = 0;
                 int neutralCount = 0;
                 int meaning = 1;
+                bool unknown = false;
 
                 foreach (string word in reply)
                 {
@@ -161,21 +162,32 @@ namespace GroupProject
                     if (meaning == 1)
                     {
                         Console.WriteLine("POSITIVE");
+                        answers[questionNumber - 1] = "yes";
                     }
 
                     if (meaning == -1)
                     {
                         Console.WriteLine("NEGATIVE");
+                        answers[questionNumber - 1] = "no";
                     }
 
                     if (meaning == 0)
                     {
                         Console.WriteLine("MAYBE");
+                        answers[questionNumber - 1] = "maybe";
                     }
                 }
                 else
                 {
                     Console.WriteLine("UNKNOWN");
+                    string temp = "";
+
+                    for (int i = 0; i < reply.Length; i++)
+                    {
+                        temp += reply[i];
+                    }
+
+                    answers[questionNumber - 1] = temp;
                 }
 
                 Thread.Sleep(1000);
