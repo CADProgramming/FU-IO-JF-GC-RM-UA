@@ -13,7 +13,7 @@ namespace GroupProject
             string job = "IT Support Person", name = "", age = "", occu = "";
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\ITSupportPerson.txt");
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
-            Intro(job, name, age, occu);
+            //Intro(job, name, age, occu);
             bool repeat = false;
             string[] storage = new string[questions.Length];
 
@@ -93,6 +93,7 @@ namespace GroupProject
         static void Questions(string[] questions, bool repeat, string[] storage)
         {
             string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
+            string[] answers = new string[questions.Length];
             string[] yes = fileText[0].Split(',');
             string[] maybe = fileText[2].Split(',');
             string[] no = fileText[1].Split(',');
@@ -115,11 +116,12 @@ namespace GroupProject
                 Console.WriteLine();
                 //Console.WriteLine(storage[count]);
                 Console.Write("                     ");
-
-                reply[count] = Console.ReadLine().ToLower().Trim();
+                Console.WriteLine(repeat);
+                replies[count] = Console.ReadLine().ToLower().Trim();
+                reply = Console.ReadLine().ToLower().Trim().Split(' ');
                 if (repeat == true)
                 {
-                    if (storage[count] != reply[count])
+                    if (storage[count] != answers[count])
                     {
                         Console.Clear();
                         Face();
@@ -129,19 +131,19 @@ namespace GroupProject
                     }
                 }
 
-                Identify(reply, yes, maybe, no);
+                Identify(reply, yes, maybe, no, answers, count);
                 
                 count++;
-                if (count == questions.Length)
+                if (count == questions.Length)//It's not doing this code
                 {
-                    Array.Copy(reply, storage, reply.Length);
+                    Array.Copy(answers, storage, reply.Length);
                     count = 0;
                     repeat = true;
                 }
             }
         }
 
-        static void Identify(string[] reply, string[] yes, string[] maybe, string[] no)
+        static void Identify(string[] reply, string[] yes, string[] maybe, string[] no, string[] answers, int count)
         {
             bool unknown = false;
             int[] meaningArray = new int[reply.Length];
@@ -195,21 +197,31 @@ namespace GroupProject
                 if (meaning == 1)
                 {
                     Console.WriteLine("POSITIVE");
+                    answers[count] = "yes";
                 }
 
                 if (meaning == -1)
                 {
                     Console.WriteLine("NEGATIVE");
+                    answers[count] = "no";
                 }
 
                 if (meaning == 0)
                 {
                     Console.WriteLine("MAYBE");
+                    answers[count] = "maybe";
                 }
             }
             else
             {
                 Console.WriteLine("UNKNOWN");
+                string temp = "";
+
+                for (int i = 0; i < reply.Length; i++)
+                {
+                    temp += ($" {reply[i]}");
+                }
+                answers[count] = temp.Trim();
             }
         }
 
