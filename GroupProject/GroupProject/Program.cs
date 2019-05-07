@@ -7,6 +7,7 @@ namespace GroupProject
 {
     class Program
     {
+        public static bool debug = true;
         public static int interviewChoice = 0;
         static void Main(string[] args)
         {
@@ -16,7 +17,11 @@ namespace GroupProject
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
             string[] answers = new string[questions.Length];
             string[] originalText = new string[questions.Length];
-            Intro(job, name, age, occu);
+            if (debug == false)
+            {
+                Intro(job, name, age, occu);
+            }
+
             bool repeat = false;
             string[] storage = new string[questions.Length];
 
@@ -40,7 +45,10 @@ namespace GroupProject
                 foreach (char letter in sentence)
                 {
                     Console.Write(letter);
-                    Thread.Sleep(rand.Next(30, 150)); //Changes the speed that letters appear to make it seem like a old school game
+                    if (debug == false)
+                    {
+                        Thread.Sleep(rand.Next(30, 150)); //Changes the speed that letters appear to make it seem like a old school game
+                    }
                 }
                 Thread.Sleep(1500);
                 Console.Clear();
@@ -124,26 +132,26 @@ namespace GroupProject
                     Console.WriteLine("###############################################################################################");
                     break;
                 case 3:
-                    Console.WriteLine(@"                            ______");
-                    Console.WriteLine(@"                           /_.  ._\");
-                    Console.WriteLine(@"                          (( \\// ))");
-                    Console.WriteLine(@"                           \\ \/ //");
-                    Console.WriteLine(@"                            \\/\//");
-                    Console.WriteLine(@"                       \\\  ( '' )  ///");
-                    Console.WriteLine(@"                        )))  \__/  (((");
-                    Console.WriteLine(@"                       (((.'__||__'.)))");
-                    Console.WriteLine(@"                        \\  )    (  //");
-                    Console.WriteLine(@"                         \\/.'  '.\//");
-                    Console.WriteLine(@"                          \/ |,,| \/");
-                    Console.WriteLine(@"                             |  |");
-                    Console.WriteLine(@"                             |  |");
-                    Console.WriteLine(@"                             //\\");
-                    Console.WriteLine(@"                            //  \\");
-                    Console.WriteLine(@"                           ||    ||");
-                    Console.WriteLine(@"                           ||    ||");
-                    Console.WriteLine(@"                           ||    ||");
-                    Console.WriteLine(@"                        ___))    ((___");
-                    Console.WriteLine(@"                       (____)    (____)");
+                    Console.WriteLine(@"                                          ______");
+                    Console.WriteLine(@"                                         /_.  ._\");
+                    Console.WriteLine(@"                                        (( \\// ))");
+                    Console.WriteLine(@"                                         \\ \/ //");
+                    Console.WriteLine(@"                                          \\/\//");
+                    Console.WriteLine(@"                                     \\\  ( '' )  ///");
+                    Console.WriteLine(@"                                      )))  \__/  (((");
+                    Console.WriteLine(@"                                     (((.'__||__'.)))");
+                    Console.WriteLine(@"                                      \\  )    (  //");
+                    Console.WriteLine(@"                                       \\/.'  '.\//");
+                    Console.WriteLine(@"                                        \/ |,,| \/");
+                    Console.WriteLine(@"                                           |  |");
+                    Console.WriteLine(@"                                           |  |");
+                    Console.WriteLine(@"                                           //\\");
+                    Console.WriteLine(@"                                          //  \\");
+                    Console.WriteLine(@"                                         ||    ||");
+                    Console.WriteLine(@"                                         ||    ||");
+                    Console.WriteLine(@"                                         ||    ||");
+                    Console.WriteLine(@"                                      ___))    ((___");
+                    Console.WriteLine(@"                                     (____)    (____)");
                     Console.WriteLine("###############################################################################################");
                     break;
             }
@@ -173,17 +181,17 @@ namespace GroupProject
                 }
                 Console.WriteLine();
                 Console.Write("                     ");
-
-                reply[count] = Console.ReadLine().ToLower().Trim();
+                reply[count] = Console.ReadLine().ToLower();
 
                 if (repeat == false)
                 {
                     originalText[count] = reply[count];
                 }
+                Identify(reply, yes, maybe, no, answers, count);
 
                 if (repeat == true)
                 {
-                    if ((storage[count] != answers[count]) && ((answers[count] == "yes") || (answers[count] == "no") || (answers[count] == "maybe")))
+                    if ((storage[count] != answers[count]) && (answers[count] != "unknown"))
                     {
                         Console.Clear();
                         Face();
@@ -194,13 +202,14 @@ namespace GroupProject
                     }
                 }
 
-                Identify(reply, yes, maybe, no, answers, count);
+                if (debug == true)
+                {
+                    Console.WriteLine($"Repeat: {repeat}");
+                    Console.WriteLine($"Answered: {answers[count]}");
+                    Console.WriteLine($"Last Answer: {storage[count]}");
+                }
 
-                Console.WriteLine(repeat);
-                Console.WriteLine(answers[count]);
-                Console.WriteLine(storage[count]);
-
-                Thread.Sleep(4000);
+                Thread.Sleep(2000);
 
                 count++;
                 if (count == questions.Length-1)
@@ -280,13 +289,7 @@ namespace GroupProject
             }
             else
             {
-                string temp = "";
-
-                for (int i = 0; i < replyAsWords.Length; i++)
-                {
-                    temp += ($" {replyAsWords[i]}");
-                }
-                answers[count] = temp.Trim();
+                answers[count] = "unknown";
             }
         } // Identifies key words
     }
