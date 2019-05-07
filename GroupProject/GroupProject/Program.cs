@@ -13,7 +13,16 @@ namespace GroupProject
         {
             Random rand = new Random();
             string job = "IT Support Person", name = "", age = "", occu = "";
-            StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\ITSupportPerson.txt");
+            string path = "";
+            if (debug == false)
+            {
+                path = @"\ITSupportPerson.txt";
+            }
+            else
+            {
+                path = @"\ITSupportPersonDebug.txt";
+            }
+            StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + path);
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
             string[] answers = new string[questions.Length];
             string[] originalText = new string[questions.Length];
@@ -212,7 +221,7 @@ namespace GroupProject
                 Thread.Sleep(2000);
 
                 count++;
-                if (count == questions.Length-1)
+                if (count == questions.Length)
                 {
                     Array.Copy(answers, storage, reply.Length);
                     count = 0;
@@ -229,9 +238,14 @@ namespace GroupProject
             int neutralCount = 0;
             int meaning = 1;
             string[] replyAsWords = reply[count].Split(' ');
+            bool usedNo = false;
 
             foreach (string word in replyAsWords)
             {
+                if (word == "no")
+                {
+                    usedNo = true;
+                }
                 foreach (string check in yes)
                 {
                     if (word == check)
@@ -263,6 +277,12 @@ namespace GroupProject
             if (neutralCount > 0)
             {
                 meaning = 0;
+            }
+
+            if ((usedNo == true) && (badCount == 0))
+            {
+                badCount = 1;
+                meaning = -1;
             }
 
             if ((goodCount == 0) && (badCount == 0) && (neutralCount == 0))
