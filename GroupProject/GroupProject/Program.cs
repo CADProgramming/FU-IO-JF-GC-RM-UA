@@ -7,13 +7,16 @@ namespace GroupProject
 {
     class Program
     {
-        public static bool debug = true;
+        // global variable intialization
+        public static bool debug = false;
         public static int interviewChoice = 0;
         static void Main(string[] args)
         {
+            // variable intialization
             Random rand = new Random();
             string job = "IT Support Person", name = "", age = "", occu = "";
             string path = "";
+            //debugging mode
             if (debug == false)
             {
                 path = @"\ITSupportPerson.txt";
@@ -22,20 +25,23 @@ namespace GroupProject
             {
                 path = @"\ITSupportPersonDebug.txt";
             }
+            //accessing questions from .txt file
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + path);
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
-            string[] answers = new string[questions.Length];
-            string[] originalText = new string[questions.Length];
+            string[] answers = new string[questions.Length];//Making a string for the answers values
+            string[] originalText = new string[questions.Length];//making a string for the word answers
+            //runs the introduction
             if (debug == false)
             {
                 Intro(job, name, age, occu);
             }
 
             //questions[5] = questions[5].Insert(15, name);
-
+            //deciding if all questions have been asked
             bool repeat = false;
+            //stores intial answers so they arent overwritten
             string[] storage = new string[questions.Length];
-
+            //loops probram
             do
             {
                 Questions(questions, repeat, storage, answers, originalText);
@@ -46,9 +52,11 @@ namespace GroupProject
         static void Intro(string job, string name, string age, string occu) // Does the introductory sequence
         {
             Random rand = new Random();
+            //code to choose interviewer
             Console.WriteLine("This interview is interactive to ensure you are most comfortable \n We have a number of interviewers for you to choose \n1 - Dr Rakessh \n2 - Annabelle \n3 - Alien");
             interviewChoice = Convert.ToInt32(Console.ReadLine());
             string[] script = { "Hi, Thank you for coming in", $"I can see here you are applying for the IT Support Person position", "So lets get started" };
+            //runs face method
             Face();
             Console.Write("                             ");
             foreach (string sentence in script)
