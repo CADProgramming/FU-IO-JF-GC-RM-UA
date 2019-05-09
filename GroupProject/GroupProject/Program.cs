@@ -31,6 +31,8 @@ namespace GroupProject
                 Intro(job, name, age, occu);
             }
 
+            //questions[5] = questions[5].Insert(15, name);
+
             bool repeat = false;
             string[] storage = new string[questions.Length];
 
