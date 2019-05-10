@@ -9,8 +9,12 @@ namespace GroupProject
     {
         // global variable intialization
         public static bool debug = false;
+<<<<<<< HEAD
         public static int interviewChoice = 0;
         public static string job = "IT Support Person", name = "", age = "", occu = "";
+=======
+        public static string interviewChoice = "";
+>>>>>>> 01bf04c5e9b6d7a3e58371265cb531c9512c15f1
         static void Main(string[] args)
         {
             // variable intialization
@@ -55,7 +59,7 @@ namespace GroupProject
             Random rand = new Random();
             //code to choose interviewer
             Console.WriteLine("This interview is interactive to ensure you are most comfortable \n We have a number of interviewers for you to choose \n1 - Dr Rakessh \n2 - Annabelle \n3 - Alien");
-            interviewChoice = Convert.ToInt32(Console.ReadLine());
+            interviewChoice = Console.ReadLine();
             string[] script = { "Hi, Thank you for coming in", $"I can see here you are applying for the IT Support Person position", "So lets get started" };
             //runs face method
             Face();
@@ -105,7 +109,7 @@ namespace GroupProject
             Console.Clear();
             switch (interviewChoice)
             {
-                case 1:
+                case "1":
 
                     Console.WriteLine("                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
                     Console.WriteLine("                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
@@ -128,7 +132,7 @@ namespace GroupProject
                     Console.WriteLine(@"                                      |  \_________/  |");
                     Console.WriteLine("###############################################################################################");
                     break;
-                case 2:
+                case "2":
 
                     Console.WriteLine(@"                                    .&&&&&&&&&&&&&&.");
                     Console.WriteLine(@"                                 .&&&&&&&&&&&&&&&&&&&&.");
@@ -151,7 +155,7 @@ namespace GroupProject
                     Console.WriteLine(@"                         &&&&&&&&&&'                '&&&&&&&&&");
                     Console.WriteLine("###############################################################################################");
                     break;
-                case 3:
+                case "3":
                     Console.WriteLine(@"                                          ______");
                     Console.WriteLine(@"                                         /_.  ._\");
                     Console.WriteLine(@"                                        (( \\// ))");
