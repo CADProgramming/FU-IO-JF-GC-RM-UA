@@ -61,9 +61,13 @@ namespace GroupProject
         static void Intro() // Does the introductory sequence
         {
             Random rand = new Random();
-            //code to choose interviewer
-            Console.WriteLine("This interview is interactive to ensure you are most comfortable \n We have a number of interviewers for you to choose \n1 - Dr Rakessh \n2 - Annabelle \n3 - Alien");
-            interviewChoice = Console.ReadLine();
+            do
+            {
+                Console.Clear();
+                //code to choose interviewer
+                Console.WriteLine("This interview is interactive to ensure you are most comfortable \n We have a number of interviewers for you to choose \n1 - Dr Rakessh \n2 - Annabelle \n3 - Alien");
+                interviewChoice = Console.ReadLine();
+            } while ((interviewChoice != "1") && (interviewChoice != "2") && (interviewChoice != "3"));
             string[] script = { "Hi, Thank you for coming in", $"I can see here you are applying for the IT Support Person position", "So lets get started" };
             //runs face method
             Face();
