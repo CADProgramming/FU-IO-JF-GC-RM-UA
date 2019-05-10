@@ -9,12 +9,12 @@ namespace GroupProject
     {
         // global variable intialization
         public static bool debug = false;
+        public static string job = "IT Support Person", name = "", age = "", occu = "";
         public static string interviewChoice = "";
         static void Main(string[] args)
         {
             // variable intialization
-            Random rand = new Random();
-            string job = "IT Support Person", name = "", age = "", occu = "";
+            Random rand = new Random();            
             string path = "";
             //debugging mode
             if (debug == false)
@@ -33,14 +33,15 @@ namespace GroupProject
             //runs the introduction
             if (debug == false)
             {
-                Intro(job, name, age, occu);
+                Intro();
             }
-
-            //questions[5] = questions[5].Insert(15, name);
             //deciding if all questions have been asked
             bool repeat = false;
             //stores intial answers so they arent overwritten
             string[] storage = new string[questions.Length];
+
+            questions[0] = questions[0].Insert(3, name + ", ");
+            
             //loops probram
             do
             {
@@ -49,7 +50,7 @@ namespace GroupProject
             } while (true);
         } // Main Method
 
-        static void Intro(string job, string name, string age, string occu) // Does the introductory sequence
+        static void Intro() // Does the introductory sequence
         {
             Random rand = new Random();
             //code to choose interviewer
