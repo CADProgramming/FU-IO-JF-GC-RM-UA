@@ -9,12 +9,8 @@ namespace GroupProject
     {
         // global variable intialization
         public static bool debug = false;
-<<<<<<< HEAD
-        public static int interviewChoice = 0;
         public static string job = "IT Support Person", name = "", age = "", occu = "";
-=======
         public static string interviewChoice = "";
->>>>>>> 01bf04c5e9b6d7a3e58371265cb531c9512c15f1
         static void Main(string[] args)
         {
             // variable intialization
