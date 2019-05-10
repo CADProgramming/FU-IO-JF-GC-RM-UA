@@ -9,12 +9,12 @@ namespace GroupProject
     {
         // global variable intialization
         public static bool debug = false;
-        public static int interviewChoice = 0;
+        public static string job = "IT Support Person", name = "", age = "", occu = "";
+        public static string interviewChoice = "";
         static void Main(string[] args)
         {
             // variable intialization
-            Random rand = new Random();
-            string job = "IT Support Person", name = "", age = "", occu = "";
+            Random rand = new Random();            
             string path = "";
             string path2 = "";
             //debugging mode
@@ -41,14 +41,15 @@ namespace GroupProject
             //runs the introduction
             if (debug == false)
             {
-                Intro(job, name, age, occu);
+                Intro();
             }
-
-            //questions[5] = questions[5].Insert(15, name);
             //deciding if all questions have been asked
             bool repeat = false;
             //stores intial answers so they arent overwritten
             string[] storage = new string[questions.Length];
+
+            questions[0] = questions[0].Insert(3, name + ", ");
+            
             //loops probram
             do
             {
@@ -57,12 +58,12 @@ namespace GroupProject
             } while (true);
         } // Main Method
 
-        static void Intro(string job, string name, string age, string occu) // Does the introductory sequence
+        static void Intro() // Does the introductory sequence
         {
             Random rand = new Random();
             //code to choose interviewer
             Console.WriteLine("This interview is interactive to ensure you are most comfortable \n We have a number of interviewers for you to choose \n1 - Dr Rakessh \n2 - Annabelle \n3 - Alien");
-            interviewChoice = Convert.ToInt32(Console.ReadLine());
+            interviewChoice = Console.ReadLine();
             string[] script = { "Hi, Thank you for coming in", $"I can see here you are applying for the IT Support Person position", "So lets get started" };
             //runs face method
             Face();
@@ -112,7 +113,7 @@ namespace GroupProject
             Console.Clear();
             switch (interviewChoice)
             {
-                case 1:
+                case "1":
 
                     Console.WriteLine("                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
                     Console.WriteLine("                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
@@ -135,7 +136,7 @@ namespace GroupProject
                     Console.WriteLine(@"                                      |  \_________/  |");
                     Console.WriteLine("###############################################################################################");
                     break;
-                case 2:
+                case "2":
 
                     Console.WriteLine(@"                                    .&&&&&&&&&&&&&&.");
                     Console.WriteLine(@"                                 .&&&&&&&&&&&&&&&&&&&&.");
@@ -158,7 +159,7 @@ namespace GroupProject
                     Console.WriteLine(@"                         &&&&&&&&&&'                '&&&&&&&&&");
                     Console.WriteLine("###############################################################################################");
                     break;
-                case 3:
+                case "3":
                     Console.WriteLine(@"                                          ______");
                     Console.WriteLine(@"                                         /_.  ._\");
                     Console.WriteLine(@"                                        (( \\// ))");
