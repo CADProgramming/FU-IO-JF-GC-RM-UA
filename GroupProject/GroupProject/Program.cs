@@ -36,7 +36,7 @@ namespace GroupProject
                 Intro(job, name, age, occu);
             }
 
-            //questions[5] = questions[5].Insert(15, name);
+            questions[5] = questions[5].Insert(15, name);
             //deciding if all questions have been asked
             bool repeat = false;
             //stores intial answers so they arent overwritten
