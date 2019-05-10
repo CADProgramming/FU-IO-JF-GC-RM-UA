@@ -16,20 +16,28 @@ namespace GroupProject
             Random rand = new Random();
             string job = "IT Support Person", name = "", age = "", occu = "";
             string path = "";
+            string path2 = "";
             //debugging mode
             if (debug == false)
             {
                 path = @"\ITSupportPerson.txt";
+                path2 = @"\ITSupportPersonFollowUp.txt";
             }
             else
             {
                 path = @"\ITSupportPersonDebug.txt";
+                path2 = @"\ITSupportPersonFollowUp.txt";
             }
             //accessing questions from .txt file
             StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + path);
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
+            StreamReader sr2 = new StreamReader(Directory.GetCurrentDirectory() + path2);
+            string[] followQuestions = sr2.ReadLine().Split(','); //This will give us all our questions in an array
             string[] answers = new string[questions.Length];//Making a string for the answers values
             string[] originalText = new string[questions.Length];//making a string for the word answers
+            string[] followAnswers = new string[questions.Length];
+            string[] followOriginalText = new string[questions.Length];
+            string[] followStorage = new string[questions.Length];
             //runs the introduction
             if (debug == false)
             {
@@ -44,7 +52,7 @@ namespace GroupProject
             //loops probram
             do
             {
-                Questions(questions, repeat, storage, answers, originalText);
+                Questions(questions, repeat, storage, answers, originalText, followQuestions, followAnswers, followOriginalText, followStorage);
                 repeat = true;
             } while (true);
         } // Main Method
@@ -176,7 +184,7 @@ namespace GroupProject
             }
         }
         
-        static void Questions(string[] questions, bool repeat, string[] storage, string[] answers, string[] originalText)
+        static void Questions(string[] questions, bool repeat, string[] storage, string[] answers, string[] originalText, string[] followQuestions, string[] followAnswers, string[] followOriginalText, string[] followStorage)
         {
             string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
             string[] yes = fileText[0].Split(',');
@@ -185,6 +193,7 @@ namespace GroupProject
             
             Random rand = new Random();
             string[] reply = new string[questions.Length];
+            string[] followReply = new string[followQuestions.Length];
             Face();
             int count = 0;
 
@@ -218,7 +227,13 @@ namespace GroupProject
                         Console.WriteLine("What is your answer?");
                         reply[count] = Console.ReadLine().ToLower().Trim();
                         originalText[count] = reply[count];
+                        Identify(reply, yes, maybe, no, answers, count);
                     }
+                }
+
+                if (answers[count] == "yes")
+                {
+                    FollowUp(repeat, followQuestions, followStorage, followAnswers, followOriginalText, followReply, count);
                 }
 
                 if (debug == true)
@@ -237,7 +252,62 @@ namespace GroupProject
                     count = 0;
                 }
             }
-        } // Asks questions
+        }
+
+        static void FollowUp(bool repeat, string[] followQuestions, string[] followStorage, string[] followAnswers, string[] followOriginalText, string[] followReply, int count)
+        {
+            string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
+            string[] yes = fileText[0].Split(',');
+            string[] maybe = fileText[2].Split(',');
+            string[] no = fileText[1].Split(',');
+
+            Random rand = new Random();
+
+            Console.Clear();
+            Face();
+            Console.Write("                     ");
+            foreach (char letter in followQuestions[count])
+            {
+                Console.Write(letter);
+                Thread.Sleep(rand.Next(30, 100));
+            }
+            Console.WriteLine();
+            Console.Write("                     ");
+            followReply[count] = Console.ReadLine().ToLower();
+
+            if (repeat == false)
+            {
+                followOriginalText[count] = followReply[count];
+            }
+            Identify(followReply, yes, maybe, no, followAnswers, count);
+
+            if (repeat == true)
+            {
+                if ((followStorage[count] != followAnswers[count]) && (followAnswers[count] != "unknown"))
+                {
+                    Console.Clear();
+                    Face();
+                    Console.WriteLine($"You answered {followReply[count]}, but last time you answered {followOriginalText[count]}");
+                    Console.WriteLine("What is your answer?");
+                    followReply[count] = Console.ReadLine().ToLower().Trim();
+                    followOriginalText[count] = followReply[count];
+                }
+            }
+
+            if (debug == true)
+            {
+                Console.WriteLine($"Repeat: {repeat}");
+                Console.WriteLine($"Answered: {followAnswers[count]}");
+                Console.WriteLine($"Last Answer: {followStorage[count]}");
+            }
+
+            Thread.Sleep(1000);
+
+            if (count == followQuestions.Length)
+            {
+                Array.Copy(followAnswers, followStorage, followReply.Length);
+            }
+        }
 
         static void Identify(string[] reply, string[] yes, string[] maybe, string[] no, string[] answers, int count)
         {
