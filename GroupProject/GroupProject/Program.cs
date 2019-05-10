@@ -7,19 +7,44 @@ namespace GroupProject
 {
     class Program
     {
+        // global variable intialization
+        public static bool debug = false;
+        public static int interviewChoice = 0;
         static void Main(string[] args)
         {
+            // variable intialization
             Random rand = new Random();
             string job = "IT Support Person", name = "", age = "", occu = "";
-            StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + @"\ITSupportPerson.txt");
+            string path = "";
+            //debugging mode
+            if (debug == false)
+            {
+                path = @"\ITSupportPerson.txt";
+            }
+            else
+            {
+                path = @"\ITSupportPersonDebug.txt";
+            }
+            //accessing questions from .txt file
+            StreamReader sr = new StreamReader(Directory.GetCurrentDirectory() + path);
             string[] questions = sr.ReadLine().Split(','); //This will give us all our questions in an array
-            Intro(job, name, age, occu);
-            bool repeat = false;
-            string[] storage = new string[questions.Length];
+            string[] answers = new string[questions.Length];//Making a string for the answers values
+            string[] originalText = new string[questions.Length];//making a string for the word answers
+            //runs the introduction
+            if (debug == false)
+            {
+                Intro(job, name, age, occu);
+            }
 
+            //questions[5] = questions[5].Insert(15, name);
+            //deciding if all questions have been asked
+            bool repeat = false;
+            //stores intial answers so they arent overwritten
+            string[] storage = new string[questions.Length];
+            //loops probram
             do
             {
-                Questions(questions, repeat, storage);
+                Questions(questions, repeat, storage, answers, originalText);
                 repeat = true;
             } while (true);
         } // Main Method
@@ -27,7 +52,11 @@ namespace GroupProject
         static void Intro(string job, string name, string age, string occu) // Does the introductory sequence
         {
             Random rand = new Random();
+            //code to choose interviewer
+            Console.WriteLine("This interview is interactive to ensure you are most comfortable \n We have a number of interviewers for you to choose \n1 - Dr Rakessh \n2 - Annabelle \n3 - Alien");
+            interviewChoice = Convert.ToInt32(Console.ReadLine());
             string[] script = { "Hi, Thank you for coming in", $"I can see here you are applying for the IT Support Person position", "So lets get started" };
+            //runs face method
             Face();
             Console.Write("                             ");
             foreach (string sentence in script)
@@ -35,7 +64,10 @@ namespace GroupProject
                 foreach (char letter in sentence)
                 {
                     Console.Write(letter);
-                    Thread.Sleep(rand.Next(30, 150)); //Changes the speed that letters appear to make it seem like a old school game
+                    if (debug == false)
+                    {
+                        Thread.Sleep(rand.Next(30, 150)); //Changes the speed that letters appear to make it seem like a old school game
+                    }
                 }
                 Thread.Sleep(1500);
                 Console.Clear();
@@ -69,33 +101,84 @@ namespace GroupProject
 
         static void Face() //Face method to easily be called to print face on console
         {
-            Console.WriteLine("                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            Console.WriteLine("                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            Console.WriteLine("                             XXXXXXXXXXXXXXXXXX         XXXXXXXX");
-            Console.WriteLine("                            XXXXXXXXXXXXXXXX              XXXXXXX");
-            Console.WriteLine("                            XXXXXXXXXXXXX                   XXXXX");
-            Console.WriteLine("                             XXX     _________ _________     XXX");
-            Console.WriteLine("                              XX    I  _xxxxx I xxxxx_  I    XX  ");
-            Console.WriteLine("                             ( X----I         I         I----X ) ");
-            Console.WriteLine("                            ( +I    I      00 I 00      I    I+ )");
-            Console.WriteLine("                             ( I    I    __0  I  0__    I    I )");
-            Console.WriteLine(@"                              (I    I______ /   \_______I    I)");
-            Console.WriteLine("                               I           ( ___ )           I");
-            Console.WriteLine("                               I    _  :::::::::::::::  _    i");
-            Console.WriteLine(@"                                \    \___ ::::::::: ___/    /");
-            Console.WriteLine(@"                                \_      \_________/      _/");
-            Console.WriteLine(@"                                   \        \___,        /");
-            Console.WriteLine(@"                                     \                 /");
-            Console.WriteLine(@"                                      |\             /|");
-            Console.WriteLine(@"                                      |  \_________/  |");
-            Console.WriteLine("###############################################################################################");
+            Console.Clear();
+            switch (interviewChoice)
+            {
+                case 1:
+
+                    Console.WriteLine("                                XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                    Console.WriteLine("                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                    Console.WriteLine("                             XXXXXXXXXXXXXXXXXX         XXXXXXXX");
+                    Console.WriteLine("                            XXXXXXXXXXXXXXXX              XXXXXXX");
+                    Console.WriteLine("                            XXXXXXXXXXXXX                   XXXXX");
+                    Console.WriteLine("                             XXX     _________ _________     XXX");
+                    Console.WriteLine("                              XX    I  _xxxxx I xxxxx_  I    XX  ");
+                    Console.WriteLine("                             ( X----I         I         I----X ) ");
+                    Console.WriteLine("                            ( +I    I      00 I 00      I    I+ )");
+                    Console.WriteLine("                             ( I    I    __0  I  0__    I    I )");
+                    Console.WriteLine(@"                              (I    I______ /   \_______I    I)");
+                    Console.WriteLine("                               I           ( ___ )           I");
+                    Console.WriteLine("                               I    _  :::::::::::::::  _    i");
+                    Console.WriteLine(@"                                \    \___ ::::::::: ___/    /");
+                    Console.WriteLine(@"                                \_      \_________/      _/");
+                    Console.WriteLine(@"                                   \        \___,        /");
+                    Console.WriteLine(@"                                     \                 /");
+                    Console.WriteLine(@"                                      |\             /|");
+                    Console.WriteLine(@"                                      |  \_________/  |");
+                    Console.WriteLine("###############################################################################################");
+                    break;
+                case 2:
+
+                    Console.WriteLine(@"                                    .&&&&&&&&&&&&&&.");
+                    Console.WriteLine(@"                                 .&&&&&&&&&&&&&&&&&&&&.");
+                    Console.WriteLine(@"                               .&&&&&&&&&&&&&&&&&&&&&&&&.");
+                    Console.WriteLine(@"                              &&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+                    Console.WriteLine(@"                             &&&&&&&& &:&&:&&:&&:&&&&&&&&&&");
+                    Console.WriteLine(@"                            &&&&&&&&:&'&''&&''&&' &:&&&&&&&&");
+                    Console.WriteLine(@"                           .&&&&&& '((((((     ))))))' &&&&&&.");
+                    Console.WriteLine(@"                           &&&&&& '(/````\     /````\)' &&&&&&");
+                    Console.WriteLine(@"                           &&&&:' `\ (_) ) \ ( (_) /` ':&&&&");
+                    Console.WriteLine(@"                           && ( :. ''''''   \ `````` .: ) &&");
+                    Console.WriteLine(@"                           &&\ \:::.      ,__)     .:::/ /&&");
+                    Console.WriteLine(@"                           '&&\ `:::               :::` /&&'");
+                    Console.WriteLine(@"                            &&&`/\:`     .-.-.     `:/\`&&&");
+                    Console.WriteLine(@"                           .&&&(  )    .'._,_.'.    (  ) &&&.");
+                    Console.WriteLine(@"                           &&&&&&&&\    \` ` `/    /&&&&&&&&");
+                    Console.WriteLine(@"                           &&&&&&&& &\   `---`    /&&&&&&&&&");
+                    Console.WriteLine(@"                           &&&&&&&&&&`-._______.-'&&&&&&&&&&");
+                    Console.WriteLine(@"                          &&&&&&&&&&&             &&&&&&&&&&&");
+                    Console.WriteLine(@"                         &&&&&&&&&&'                '&&&&&&&&&");
+                    Console.WriteLine("###############################################################################################");
+                    break;
+                case 3:
+                    Console.WriteLine(@"                                          ______");
+                    Console.WriteLine(@"                                         /_.  ._\");
+                    Console.WriteLine(@"                                        (( \\// ))");
+                    Console.WriteLine(@"                                         \\ \/ //");
+                    Console.WriteLine(@"                                          \\/\//");
+                    Console.WriteLine(@"                                     \\\  ( '' )  ///");
+                    Console.WriteLine(@"                                      )))  \__/  (((");
+                    Console.WriteLine(@"                                     (((.'__||__'.)))");
+                    Console.WriteLine(@"                                      \\  )    (  //");
+                    Console.WriteLine(@"                                       \\/.'  '.\//");
+                    Console.WriteLine(@"                                        \/ |,,| \/");
+                    Console.WriteLine(@"                                           |  |");
+                    Console.WriteLine(@"                                           |  |");
+                    Console.WriteLine(@"                                           //\\");
+                    Console.WriteLine(@"                                          //  \\");
+                    Console.WriteLine(@"                                         ||    ||");
+                    Console.WriteLine(@"                                         ||    ||");
+                    Console.WriteLine(@"                                         ||    ||");
+                    Console.WriteLine(@"                                      ___))    ((___");
+                    Console.WriteLine(@"                                     (____)    (____)");
+                    Console.WriteLine("###############################################################################################");
+                    break;
+            }
         }
         
-        static void Questions(string[] questions, bool repeat, string[] storage)
+        static void Questions(string[] questions, bool repeat, string[] storage, string[] answers, string[] originalText)
         {
             string[] fileText = File.ReadAllLines(Directory.GetCurrentDirectory().ToString() + @"\ResponseCheck.txt");
-            string[] answers = new string[questions.Length];
-            string[] originalText = new string[questions.Length];
             string[] yes = fileText[0].Split(',');
             string[] maybe = fileText[2].Split(',');
             string[] no = fileText[1].Split(',');
@@ -117,36 +200,38 @@ namespace GroupProject
                 }
                 Console.WriteLine();
                 Console.Write("                     ");
-
-                reply[count] = Console.ReadLine().ToLower().Trim();
+                reply[count] = Console.ReadLine().ToLower();
 
                 if (repeat == false)
                 {
                     originalText[count] = reply[count];
                 }
+                Identify(reply, yes, maybe, no, answers, count);
 
                 if (repeat == true)
                 {
-                    if ((storage[count] != answers[count]) && ((answers[count] == "yes") || (answers[count] == "no") || (answers[count] == "maybe")))
+                    if ((storage[count] != answers[count]) && (answers[count] != "unknown"))
                     {
                         Console.Clear();
                         Face();
                         Console.WriteLine($"You answered {reply[count]}, but last time you answered {originalText[count]}");
                         Console.WriteLine("What is your answer?");
                         reply[count] = Console.ReadLine().ToLower().Trim();
+                        originalText[count] = reply[count];
                     }
                 }
 
-                Identify(reply, yes, maybe, no, answers, count);
+                if (debug == true)
+                {
+                    Console.WriteLine($"Repeat: {repeat}");
+                    Console.WriteLine($"Answered: {answers[count]}");
+                    Console.WriteLine($"Last Answer: {storage[count]}");
+                }
 
-                Console.WriteLine(repeat);
-                Console.WriteLine(answers[count]);
-                Console.WriteLine(storage[count]);
-
-                Thread.Sleep(4000);
+                Thread.Sleep(2000);
 
                 count++;
-                if (count == questions.Length-1)
+                if (count == questions.Length)
                 {
                     Array.Copy(answers, storage, reply.Length);
                     count = 0;
@@ -163,9 +248,14 @@ namespace GroupProject
             int neutralCount = 0;
             int meaning = 1;
             string[] replyAsWords = reply[count].Split(' ');
+            bool usedNo = false;
 
             foreach (string word in replyAsWords)
             {
+                if (word == "no")
+                {
+                    usedNo = true;
+                }
                 foreach (string check in yes)
                 {
                     if (word == check)
@@ -199,6 +289,12 @@ namespace GroupProject
                 meaning = 0;
             }
 
+            if ((usedNo == true) && (badCount == 0))
+            {
+                badCount = 1;
+                meaning = -1;
+            }
+
             if ((goodCount == 0) && (badCount == 0) && (neutralCount == 0))
             {
                 unknown = true;
@@ -223,13 +319,7 @@ namespace GroupProject
             }
             else
             {
-                string temp = "";
-
-                for (int i = 0; i < replyAsWords.Length; i++)
-                {
-                    temp += ($" {replyAsWords[i]}");
-                }
-                answers[count] = temp.Trim();
+                answers[count] = "unknown";
             }
         } // Identifies key words
     }
