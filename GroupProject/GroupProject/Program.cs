@@ -53,7 +53,8 @@ namespace GroupProject
 
             //Inserts information from the introduction into questions
             questions[0] = questions[0].Insert(3, name + ", ");
-            
+            questions[9] = questions[9].Insert(33, occu + "?");
+
             //Loops program infinitely
             do
             {
